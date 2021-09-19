@@ -1,0 +1,10 @@
+{
+  "name": "starter",
+  "version": "0.0.1",
+  "description": "Starter Toolchain",
+  "main": "src/index.ts",
+  "repository": "https://github.com/IntegrantLabs/React-Webpack-Babel-Typescript-Toolchain-Starter.git",
+  "author": "ge-hall <ge-hall@outlook.com>",
+  "license": "MIT",
+  "private": false
+}
