@@ -61,7 +61,9 @@ tsconfig.json simple configuration to support JSX and compile TypeScript down to
 
 See TypeScript’s documentation to learn more about [tsconfig.json configuration options](https://www.typescriptlang.org/docs/handbook/tsconfig-json.html)
 
-## Webpack
+## Webpack setup
+
+[git commit 37a0ace863c7d57f34e22c1c6906076bcb8cb0e1]
 
 Webpack is a bundler so it takes your source code, runs any transformations configured through any plugins and tools such as 
 Babel. Created a index_bundle.js filed containing your application logic and writes this to /dist/index_bundle.js
@@ -130,3 +132,35 @@ guide only for your information.
 You can now run your app with a dev server with the following command
     
     yarn start
+
+## Babel setup 
+
+    yarn add -D babel-loader @babel/cli @babel/core @babel/preset-env @babel/preset-react  
+
+    touch babel.config.json
+    “module”: {
+        rules: [
+            {
+                test: “/\\.m?js$/“,
+                exclude: /node_modules/,
+                use: {
+                    loader: ‘babel-loader’,
+                    options: {
+                    presets: [
+                        ["@babel/preset-typescript", "@babel/preset-env", { "targets": "defaults" }]
+                        ]
+                    }
+                }
+            }
+        ]
+    }
+
+## Add React
+
+    yarn add react react-dom
+    yarn add -D @types/react @types/react-dom  
+
+## Redux Toolkit
+
+    yarn add @reduxjs/toolkit  
+    yarn add -D @types/react-redux  
