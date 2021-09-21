@@ -4,7 +4,7 @@ Select the parts you want to use. No Create-React_App used, building each part o
 the documentation for each tool you go to confirm you are configuring for the current version of each tool
 
 ## Initialise Yarn Project 
-<i>[git commit 86222aea3fb79cd95df4a2906e9d7f12b5cab7af]
+<i>[git commit https://github.com/IntegrantLabs/React-Webpack-Babel-Typescript-Toolchain-Starter/commit/86222aea3fb79cd95df4a2906e9d7f12b5cab7af]
 
 If you prefer npm you can replace each usage of yarn with npm
 
@@ -32,7 +32,7 @@ Note you should edit the included .gitignore to suit your needs.
 
 
 ## Typescript support [Optional]
-<i>[git commit 0538ff9c6208cf0d04da28b3808f426ff336f7ae]
+<i>[git commit https://github.com/IntegrantLabs/React-Webpack-Babel-Typescript-Toolchain-Starter/commit/0538ff9c6208cf0d04da28b3808f426ff336f7ae]
 
 This is the basic setup to enable typescript support in your project. You really need to integrate ts support
 into babel and webpack for a complete working tool chain.
@@ -63,7 +63,7 @@ See TypeScript’s documentation to learn more about [tsconfig.json configuratio
 
 ## Webpack setup
 
-[git commit 37a0ace863c7d57f34e22c1c6906076bcb8cb0e1]
+[git commit https://github.com/IntegrantLabs/React-Webpack-Babel-Typescript-Toolchain-Starter/commit/37a0ace863c7d57f34e22c1c6906076bcb8cb0e1]
 
 Webpack is a bundler so it takes your source code, runs any transformations configured through any plugins and tools such as 
 Babel. Created a index_bundle.js filed containing your application logic and writes this to /dist/index_bundle.js
@@ -134,7 +134,7 @@ You can now run your app with a dev server with the following command
     yarn start
 
 ## Babel setup 
-
+<i>[git commit https://github.com/IntegrantLabs/React-Webpack-Babel-Typescript-Toolchain-Starter/commit/cf92dfb81fae08bdd8ff6bbaa3eb91f376100edf]]
     yarn add -D babel-loader @babel/cli @babel/core @babel/preset-env @babel/preset-react  
 
     touch babel.config.json
@@ -164,3 +164,37 @@ You can now run your app with a dev server with the following command
 
     yarn add @reduxjs/toolkit  
     yarn add -D @types/react-redux  
+
+###RTK config
+[Getting Started](https://redux-toolkit.js.org/tutorials/typescript)
+
+Project Setup
+Define Root State and Dispatch Types
+
+    touch src/app/store.ts
+    
+ add to store.ts
+
+    import {configureStore} from "@reduxjs/toolkit";
+
+    export const store = configureStore({
+        reducer:{
+
+        }
+    })
+
+    export type RootState = ReturnType<typeof store.getState>
+    export type AppDispatch = typeof store.dispatch
+
+    touch src/app/hooks.ts
+Define Typed Hooks
+
+ add to hooks.ts
+
+    import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
+    import type {RootState, AppDispatch} from "./store";
+
+    export const useAppDispatch = () => useDispatch<AppDispatch>();
+    export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+
+Ready to define slices as needed
