@@ -198,3 +198,57 @@ Define Typed Hooks
     export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 Ready to define slices as needed
+## TailwindCSS
+
+This is optional, TailwindCSS is a library I have not used before. Have used CSS-in-JS libs and component libraries with
+ built in theming and styling such as ChakraUI. My experience has led me back to the basics as there were many situation
+ where we would need to fit with the styling imposed by the component library. So the choice is yours, you can fork your 
+ toolchain here and use different tooling for theming and styling.
+ 
+   yarn add  tailwindcss@latest 
+   yarn add -D postcss@latest autoprefixer@latest 
+    touch postcss.config.js
+    + // postcss.config.js
+      module.exports = {
+        plugins: {
+          tailwindcss: {},
+          autoprefixer: {},
+        }
+      }
+      npx tailwindcss init
+      
+     mkdir css
+     touch ./css/styles.css
+     
+     # webpack postcss loader
+     yarn add -D postcss-loader style-loader css-loader postcss-preset-env
+     
+     # webpack.config.json
+     + {
+                       test: /\.css$/i,
+                       use: [
+                           "style-loader",
+                           "css-loader",
+                           {
+                               loader: "postcss-loader",
+                               options: {
+                                   postcssOptions: {
+                                       plugins: [
+                                           [
+                                               "postcss-preset-env",
+                                               {
+                                                   // Options
+                                               },
+                                           ],
+                                       ],
+                                   },
+                               },
+                           },
+                       ],
+                   },
+    yarn add @headlessui/react @heroicons/react   
+Inter font support
+index.html
+    
+    <link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+ 
